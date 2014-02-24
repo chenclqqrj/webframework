@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  * @author 陈瑞军
  */
-//@Entity
+@Entity
 @Table(name = "moduletree")
 public class MenuItem extends my.webframework.share.Entity {
 
@@ -88,7 +88,7 @@ public class MenuItem extends my.webframework.share.Entity {
 	private List<MenuItem> children;
 	@JsonIgnore
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE }, targetEntity = RoleMenuItem.class)
-	@JoinColumn(name = "module_id", unique = true)
+	@JoinColumn(name = "module_id")
 	private Set<RoleMenuItem> roleMenuItems;
 	@Transient
 	private String permission;

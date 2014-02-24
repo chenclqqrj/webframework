@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  * @author 陈瑞军
  */
-//@Entity
+@Entity
 @Table(name = "role")
 public class Role {
 	/** 角色编码 */

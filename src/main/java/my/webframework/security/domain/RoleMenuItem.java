@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * 
  * @author 陈瑞军
  */
-//@Entity
+@Entity
 @Table(name = "modulerolelink")
 public class RoleMenuItem {
 	/** id */
