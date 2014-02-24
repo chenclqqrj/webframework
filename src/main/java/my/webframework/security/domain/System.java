@@ -16,7 +16,7 @@ import javax.persistence.UniqueConstraint;
  * 
  * @author 陈瑞军
  */
-@Entity
+//@Entity
 @Table(name = "system", uniqueConstraints = @UniqueConstraint(columnNames = { "name", "appCode" }))
 public class System extends my.webframework.share.Entity {
 	private static final long serialVersionUID = -7963468418994235529L;

@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  * @author 陈瑞军
  */
-@Entity
+//@Entity
 @Table(name = "moduletree")
 public class MenuItem extends my.webframework.share.Entity {
 

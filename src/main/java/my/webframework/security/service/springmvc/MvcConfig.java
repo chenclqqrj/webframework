@@ -14,12 +14,19 @@ import org.springframework.http.converter.support.AllEncompassingFormHttpMessage
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+
+import freemarker.cache.ClassTemplateLoader;
+import freemarker.cache.MultiTemplateLoader;
+import freemarker.cache.TemplateLoader;
 
 @Configuration
 @EnableWebMvc
@@ -73,23 +80,27 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 //		registry.addInterceptor(new SessionHandlerInterceptor());
 	}
 
-
-	@Bean
-	public InternalResourceViewResolver getInternalResourceViewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/views/");
-		resolver.setSuffix(".ftl");
-		return resolver;
+    @Bean  
+    public ViewResolver getViewResolver() {  
+        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();  
+        resolver.setViewClass(FreeMarkerView.class);
+        resolver.setCache(false);  
+//      resolver.setPrefix("");  
+        resolver.setContentType("text/html; charset=utf-8");
+        resolver.setSuffix(".ftl");  
+        return resolver;  
+          
+    }  
+  @Bean
+	public FreeMarkerConfigurer freeMarkerConfigurer() {
+		FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
+		TemplateLoader tl = new ClassTemplateLoader(MvcConfig.class,
+				"/my/webframework/ui");
+		MultiTemplateLoader mtl = new MultiTemplateLoader(
+				new TemplateLoader[] { tl });
+		configurer.getConfiguration().setTemplateLoader(mtl);
+		return configurer;
 	}
-//  @Bean
-//  public FreeMarkerConfigurer freeMarkerConfigurer() {
-//      FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
-//      configurer.setTemplateLoaderPath(
-//
-//              "/WEB-INF/views/**/freemarker.xml");
-////      configurer.set(true);
-//      return configurer;
-//  }
 
     @Bean
     public MultipartResolver multipartResolver() {

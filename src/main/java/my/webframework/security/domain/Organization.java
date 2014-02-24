@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  * @author 陈瑞军
  */
-@Entity
+//@Entity
 @Table(name = "organization")
 public class Organization {
 	/** 机构编码 */
