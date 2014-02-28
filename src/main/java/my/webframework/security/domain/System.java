@@ -1,13 +1,7 @@
 package my.webframework.security.domain;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -16,8 +10,9 @@ import javax.persistence.UniqueConstraint;
  * 
  * @author 陈瑞军
  */
-//@Entity
-@Table(name = "system", uniqueConstraints = @UniqueConstraint(columnNames = { "name", "appCode" }))
+@Entity
+@Table(name = "system", uniqueConstraints = @UniqueConstraint(columnNames = {
+		"name", "appCode" }))
 public class System extends my.webframework.share.Entity {
 	private static final long serialVersionUID = -7963468418994235529L;
 	/* 系统编码，系统外部附加的辅助的唯一编号 */
@@ -41,9 +36,6 @@ public class System extends my.webframework.share.Entity {
 	/* 系统路径 */
 	@Column(name = "url")
 	private String url;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = MenuItem.class)
-	@JoinColumn(name = "system_id", unique = true)
-	private Set<MenuItem> menuItems;
 
 	public String getName() {
 		return name;
@@ -93,14 +85,6 @@ public class System extends my.webframework.share.Entity {
 		this.url = url;
 	}
 
-	public Set<MenuItem> getMenuItems() {
-		return menuItems;
-	}
-
-	public void setMenuItems(Set<MenuItem> menuItems) {
-		this.menuItems = menuItems;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -108,5 +92,4 @@ public class System extends my.webframework.share.Entity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 }

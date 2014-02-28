@@ -25,12 +25,15 @@ import my.webframework.security.domain.Organization_;
 import my.webframework.security.domain.Role;
 import my.webframework.security.domain.RoleMenuItem;
 import my.webframework.security.domain.Role_;
+import my.webframework.security.domain.User;
+import my.webframework.security.domain.User_;
 import my.webframework.security.reponsitory.IEmployeeReponsitory;
 import my.webframework.security.reponsitory.IMenuItemReponsitory;
 import my.webframework.security.reponsitory.IOrganizationReponsitory;
 import my.webframework.security.reponsitory.IRoleMenuItemReponsitory;
 import my.webframework.security.reponsitory.IRoleReponsitory;
 import my.webframework.security.reponsitory.ISystemReponsitory;
+import my.webframework.security.reponsitory.IUserReponsitory;
 import my.webframework.share.BatchSaveResult;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -45,23 +48,13 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author crjun
- *
- */
-/**
- * @author crjun
- *
- */
-/**
- * @author crjun
- *
- */
 @Service
 @Transactional
 public class SecurityService implements ISecurityService {
 	private static final Logger LOGGER = Logger.getLogger(SecurityService.class);
 
+	@Resource(name = "userReponsitory")
+	private IUserReponsitory userReponsitory;
 	@Resource(name = "employeeReponsitory")
 	private IEmployeeReponsitory employeeReponsitory;
 	@Resource(name = "roleReponsitory")
@@ -578,21 +571,22 @@ public class SecurityService implements ISecurityService {
 
 	@Override
 	public String getLockState(final String username) {
-		Employee e = queryEmployeeByUsername(username);
-		Validate.notNull(e, "员工账户[" + username + "]不存在");
-		return e.getUser().getIslock();
+//		Employee e = queryEmployeeByUsername(username);
+//		Validate.notNull(e, "员工账户[" + username + "]不存在");
+//		return e.getUser().getIslock();
+		return null;
 	}
 
 	@Override
 	public boolean changeLockState(final String username, boolean isLock) {
-		Employee e = queryEmployeeByUsername(username);
-		Validate.notNull(e, "员工账户[" + username + "]不存在");
-		if (isLock) {
-			e.getUser().setIslock("T");
-		} else {
-			e.getUser().setIslock("F");
-		}
-		employeeReponsitory.saveAndFlush(e);
+//		Employee e = queryEmployeeByUsername(username);
+//		Validate.notNull(e, "员工账户[" + username + "]不存在");
+//		if (isLock) {
+//			e.getUser().setIslock("T");
+//		} else {
+//			e.getUser().setIslock("F");
+//		}
+//		employeeReponsitory.saveAndFlush(e);
 		return true;
 	}
 
@@ -719,6 +713,48 @@ public class SecurityService implements ISecurityService {
 
 	@Override
 	public List<System> getAllSystem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer addUser(User user) {
+		return userReponsitory.saveAndFlush(user).getId();
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		userReponsitory.saveAndFlush(user);
+		return true;
+	}
+
+	@Override
+	public boolean removeUser(Integer userId) {
+		userReponsitory.delete(userId);
+		return true;
+	}
+
+	@Override
+	public boolean userExists(final String username) {
+		userReponsitory.count(new Specification<User>() {
+			@Override
+			public Predicate toPredicate(Root<User> root,
+					CriteriaQuery<?> query, CriteriaBuilder cb) {
+				return cb.equal(root.get(User_.), username);
+			}
+		});
+		return false;
+	}
+
+	@Override
+	public String changePassword(Integer userId, String oldPassword,
+			String newPassword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> queryUseres(Specification<User> filter) {
 		// TODO Auto-generated method stub
 		return null;
 	}

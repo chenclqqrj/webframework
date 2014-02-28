@@ -6,6 +6,7 @@ import my.webframework.security.domain.Employee;
 import my.webframework.security.domain.MenuItem;
 import my.webframework.security.domain.Organization;
 import my.webframework.security.domain.Role;
+import my.webframework.security.domain.User;
 import my.webframework.share.BatchSaveResult;
 
 import org.springframework.data.domain.Page;
@@ -108,15 +109,20 @@ public interface ISecurityService {
 	boolean removeRoleMenuItem(Integer roleMenuId);
 	
 	/** ############################################################### */
-	boolean auth(String username, String password);
-	boolean changePassword(String username, String oldPassword, String newPassword);
-	String getLockState(String username);
-	boolean changeLockState(String username, boolean isLock);
-	/** ############################################################### */
 	List<MenuItem> getPermissionTree(String username);
 	/** ############################################################### */
 	boolean addSystem(System system);
 	boolean updateSystem(System system);
 	boolean removeSystem(Integer systemId);
 	List<System> getAllSystem();
+	
+	/** ############################################################### */
+	Integer addUser(User user);
+	boolean updateUser(User user);
+	boolean removeUser(Integer userId);
+	boolean auth(String username, String password);
+	boolean userExists(String username);
+	String changePassword(Integer userId, String oldPassword, String newPassword);
+	boolean changeLockState(String username, boolean isLock);
+	List<User> queryUseres(Specification<User> filter);
 }

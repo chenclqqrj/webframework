@@ -27,7 +27,6 @@ public abstract class Employee_ {
 	public static volatile SingularAttribute<Employee, Integer> organization_id;
 	public static volatile SetAttribute<Employee, Role> roles;
 	public static volatile SingularAttribute<Employee, String> name;
-	public static volatile SingularAttribute<Employee, User> user;
 
 }
 
