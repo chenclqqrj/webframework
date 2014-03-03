@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(System.class)
-public abstract class System_ extends my.webframework.share.Entity_ {
+public abstract class System_ extends my.webframework.security.domain.Entity_ {
 
 	public static volatile SingularAttribute<System, String> title;
 	public static volatile SingularAttribute<System, String> description;

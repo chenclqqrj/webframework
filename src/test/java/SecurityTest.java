@@ -125,7 +125,7 @@ public class SecurityTest {
 		User u = new User();
 		u.setUsername("guili");
 		u.setPassword("111111");
-		u.setIslock("F");
+//		u.setIslock("F");
 		e.setUser(u);
 		er.saveAndFlush(e);
 		junit.framework.Assert.assertNotNull(e.getId());

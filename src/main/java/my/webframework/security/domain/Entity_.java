@@ -1,4 +1,4 @@
-package my.webframework.share;
+package my.webframework.security.domain;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;

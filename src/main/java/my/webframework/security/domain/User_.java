@@ -7,7 +7,7 @@ import my.webframework.security.domain.User.AccountType;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(User.class)
-public abstract class User_ extends my.webframework.share.Entity_ {
+public abstract class User_ extends my.webframework.security.domain.Entity_ {
 
 	public static volatile SingularAttribute<User, String> username;
 	public static volatile SingularAttribute<User, AccountType> accountType;

@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "moduletree")
-public class MenuItem extends my.webframework.share.Entity {
+public class MenuItem extends my.webframework.security.domain.Entity {
 
 	private static final long serialVersionUID = -8491302719149503799L;
 	/** 菜单编码 */

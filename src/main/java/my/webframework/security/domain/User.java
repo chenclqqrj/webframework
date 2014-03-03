@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "User", uniqueConstraints = @UniqueConstraint(columnNames = { "username" }))
-public class User extends my.webframework.share.Entity {
+public class User extends my.webframework.security.domain.Entity {
 	private static final long serialVersionUID = -4384358401242576466L;
 	/** 登录名称 */
 	@Column(name = "username", nullable = false)

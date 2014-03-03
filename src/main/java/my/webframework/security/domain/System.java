@@ -13,7 +13,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "system", uniqueConstraints = @UniqueConstraint(columnNames = {
 		"name", "appCode" }))
-public class System extends my.webframework.share.Entity {
+public class System extends my.webframework.security.domain.Entity {
 	private static final long serialVersionUID = -7963468418994235529L;
 	/* 系统编码，系统外部附加的辅助的唯一编号 */
 	@Column(name = "appCode")

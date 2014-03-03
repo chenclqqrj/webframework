@@ -556,7 +556,7 @@ public class SecurityService implements ISecurityService {
 		return false;
 	}
 
-	@Override
+//	@Override
 	public boolean changePassword(final String username, String oldPassword, String newPassword) {
 		Employee e = queryEmployeeByUsername(username);
 		if (null != e && StringUtils.equals(oldPassword, e.getUser().getPassword())) {
@@ -569,10 +569,10 @@ public class SecurityService implements ISecurityService {
 		return false;
 	}
 
-	@Override
+//	@Override
 	public String getLockState(final String username) {
-//		Employee e = queryEmployeeByUsername(username);
-//		Validate.notNull(e, "员工账户[" + username + "]不存在");
+		Employee e = queryEmployeeByUsername(username);
+		Validate.notNull(e, "员工账户[" + username + "]不存在");
 //		return e.getUser().getIslock();
 		return null;
 	}
@@ -740,7 +740,7 @@ public class SecurityService implements ISecurityService {
 			@Override
 			public Predicate toPredicate(Root<User> root,
 					CriteriaQuery<?> query, CriteriaBuilder cb) {
-				return cb.equal(root.get(User_.), username);
+				return cb.equal(root.get(User_.username), username);
 			}
 		});
 		return false;

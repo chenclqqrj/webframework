@@ -370,7 +370,8 @@ public class SecurityController {
 	@RequestMapping(value = "/user/change-password")
 	@ResponseBody
 	public CommonResult changePassword(@RequestParam String username, @RequestParam String oldPassword, @RequestParam String newPassword) {
-		return new CommonResult(securityService.changePassword(username, oldPassword, newPassword));
+		return null;
+//		return new CommonResult(securityService.changePassword(username, oldPassword, newPassword));
 	}
 	
 	@RequestMapping(value = "/user/change-lockstate")
@@ -382,7 +383,8 @@ public class SecurityController {
 	@RequestMapping(value = "/user/lockstate")
 	@ResponseBody
 	public CommonResult getLockState(@RequestParam String username) {
-		return new CommonResult(securityService.getLockState(username));
+		return null;
+//		return new CommonResult(securityService.getLockState(username));
 	}
 	
 	@RequestMapping(value = "/user/permission-tree")

@@ -10,7 +10,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(MenuItem.class)
-public abstract class MenuItem_ extends my.webframework.share.Entity_ {
+public abstract class MenuItem_ extends my.webframework.security.domain.Entity_ {
 
 	public static volatile SingularAttribute<MenuItem, Integer> xh;
 	public static volatile SingularAttribute<MenuItem, String> module;
