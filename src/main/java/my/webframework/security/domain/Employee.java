@@ -52,12 +52,12 @@ public class Employee {
 	@Column(name = "sex")
 	private String sex;
 	/** 登录信息 */
-	@Embedded()
-	@AttributeOverrides({
-			@AttributeOverride(name = "username", column = @Column(name = "login_name")),
-			@AttributeOverride(name = "password", column = @Column(name = "password")),
-			@AttributeOverride(name = "isLock", column = @Column(name = "islock")) })
-	private User user;
+//	@Embedded()
+//	@AttributeOverrides({
+//			@AttributeOverride(name = "username", column = @Column(name = "login_name")),
+//			@AttributeOverride(name = "password", column = @Column(name = "password")),
+//			@AttributeOverride(name = "isLock", column = @Column(name = "islock")) })
+//	private User user;
 	/** 排序字段 */
 	@Column(name = "order_number")
 	private double order_number;
@@ -131,14 +131,14 @@ public class Employee {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 	public double getOrder_number() {
 		return order_number;

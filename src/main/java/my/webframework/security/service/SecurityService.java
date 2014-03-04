@@ -558,14 +558,14 @@ public class SecurityService implements ISecurityService {
 
 //	@Override
 	public boolean changePassword(final String username, String oldPassword, String newPassword) {
-		Employee e = queryEmployeeByUsername(username);
-		if (null != e && StringUtils.equals(oldPassword, e.getUser().getPassword())) {
-			e.getUser().setPassword(newPassword);
-			employeeReponsitory.saveAndFlush(e);
-			return true;
-		} else {
-			LOGGER.debug("员工不存或者旧密码不正确>>>>");
-		}
+//		Employee e = queryEmployeeByUsername(username);
+//		if (null != e && StringUtils.equals(oldPassword, e.getUser().getPassword())) {
+//			e.getUser().setPassword(newPassword);
+//			employeeReponsitory.saveAndFlush(e);
+//			return true;
+//		} else {
+//			LOGGER.debug("员工不存或者旧密码不正确>>>>");
+//		}
 		return false;
 	}
 
